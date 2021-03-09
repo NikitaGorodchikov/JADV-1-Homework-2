@@ -7,12 +7,14 @@ public class Seller {
 
     public synchronized void receiveAuto() {
         try {
-            Thread t = Thread.currentThread();
-            System.out.println(t.getName() + " выпустил 1 новое авто");
-            Thread.sleep(3000);
-            shop.getAutos().add(new Auto());
-            System.out.println("Автосалон: Авто готово к продаже!");
-            notify();
+            for (int i = 0; i < 3; i++) {
+                Thread t = Thread.currentThread();
+                System.out.println(t.getName() + " выпустил 1 новое авто");
+                Thread.sleep(3000);
+                shop.getAutos().add(new Auto());
+                System.out.println("Автосалон: Авто готово к продаже!");
+                notify();
+            }
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
